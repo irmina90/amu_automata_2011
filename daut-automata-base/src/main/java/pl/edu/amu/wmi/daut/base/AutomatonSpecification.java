@@ -633,8 +633,9 @@ abstract class AutomatonSpecification implements Cloneable  {
      */
     @Override
     public AutomatonSpecification clone() {
-        AutomatonSpecification mini = new NaiveAutomatonSpecification();
+        NaiveAutomatonSpecification mini = new NaiveAutomatonSpecification();
         State q = mini.addState();
+        markAsInitial(q);
         mini.insert(q, this);
         return mini;
     }
