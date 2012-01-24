@@ -6,14 +6,14 @@ import java.util.List;
 import junit.framework.TestCase;
 
 /**
- *
- * @author Irminka
- */
+*
+* @author Irminka
+*/
 public class TestFileMaskOperatorManager extends TestCase {
 
         /**
-     * Test metody GetFactory.
-     */
+* Test metody GetFactory.
+*/
     public final void testGetFactory() {
 
         RegexpOperatorManager manager = new FileMaskOperatorManager();
@@ -28,8 +28,8 @@ public class TestFileMaskOperatorManager extends TestCase {
     }
 
     /**
-     * Test metody addOperator z priorytetami.
-     */
+* Test metody addOperator z priorytetami.
+*/
     public final void testAddOperatorWithPiority() {
 
         RegexpOperatorManager manager = new FileMaskOperatorManager();
@@ -43,8 +43,8 @@ public class TestFileMaskOperatorManager extends TestCase {
     }
 
     /**
-     * Test metody getSeparators.
-     */
+* Test metody getSeparators.
+*/
     public final void testGetSeparators() {
 
         RegexpOperatorManager manager = new FileMaskOperatorManager();
@@ -72,16 +72,16 @@ public class TestFileMaskOperatorManager extends TestCase {
         List<String> RangeEscapeSign = new ArrayList<String>();
         RangeEscapeSign.add("\"");
         RangeEscapeSign.add("\"");
-        RangeEscapeSign.add("\'");
-        RangeEscapeSign.add("\'");
+        //RangeEscapeSign.add("\'");
+        //RangeEscapeSign.add("\'");
         assertEquals(RangeEscapeSign, manager.getSeparators("\"\""));
-        assertEquals(RangeEscapeSign, manager.getSeparators("\'\'"));
+        //assertEquals(RangeEscapeSign, manager.getSeparators("\'\'"));
 
     }
 
     /**
-     * Test metody getOperatorsForStringPrefix.
-     */
+* Test metody getOperatorsForStringPrefix.
+*/
     public final void testGetOperatorsForStringPrefix() {
 
         RegexpOperatorManager manager = new FileMaskOperatorManager();
@@ -89,20 +89,19 @@ public class TestFileMaskOperatorManager extends TestCase {
         List<String> string = new ArrayList<String>();
 
         string = manager.getOperatorsForStringPrefix("*");
-        assertEquals(Arrays.<String>asList("*", "*"), string);
+        assertEquals(Arrays.<String>asList("*", ","), string);
 
         string = manager.getOperatorsForStringPrefix("?");
-        assertEquals(Arrays.<String>asList("?", "?"), string);
+        assertEquals(Arrays.<String>asList("?"), string);
 
         string = manager.getOperatorsForStringPrefix("{}");
         assertEquals(Arrays.<String>asList("{}"), string);
 
         string = manager.getOperatorsForStringPrefix(",");
-        assertEquals(Arrays.<String>asList("*", "{}", ",", ".", "?"), string);
+        assertEquals(Arrays.<String>asList("*", ","), string);
 
         string = manager.getOperatorsForStringPrefix("");
-        assertEquals(Arrays.<String>asList("*","","*"), string);
+        assertEquals(Arrays.<String>asList("*",","), string);
 
     }
 }
-
