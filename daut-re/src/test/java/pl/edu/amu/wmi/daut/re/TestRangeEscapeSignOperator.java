@@ -1,15 +1,14 @@
 package pl.edu.amu.wmi.daut.re;
-
 import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
 import pl.edu.amu.wmi.daut.base.NondeterministicAutomatonByThompsonApproach;
 import junit.framework.TestCase;
-import pl.edu.amu.wmi.daut.re.AlternativeOperator.Factory;
+import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
+
 /**
  *
  * @author Irminka
  */
-
 public class TestRangeEscapeSignOperator extends TestCase {
 
        public void testRangeEscapeSignOperator() {
@@ -57,5 +56,4 @@ public class TestRangeEscapeSignOperator extends TestCase {
 
     }
 
-    }
-
+}
