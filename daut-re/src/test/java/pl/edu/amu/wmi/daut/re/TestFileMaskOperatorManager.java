@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import junit.framework.TestCase;
-import pl.edu.amu.wmi.daut.re.AlternativeOperator.Factory;
 
 /**
  *
