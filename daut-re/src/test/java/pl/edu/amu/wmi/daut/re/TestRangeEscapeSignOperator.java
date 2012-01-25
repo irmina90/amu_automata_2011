@@ -29,7 +29,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
  */
      public void testCreateFixedAutomaton() {
 
-       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
+       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
        AutomatonByRecursion result = new AutomatonByRecursion(automaton);
        assertFalse(automaton.isEmpty());
@@ -43,7 +43,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
         assertTrue(result.accepts("plik.???"));
         assertTrue(result.accepts("*.txt???"));
 
-       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
+       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'");
        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
        AutomatonByRecursion result2 = new AutomatonByRecursion(automaton2);
        assertFalse(automaton2.isEmpty());
@@ -53,8 +53,8 @@ public class TestRangeEscapeSignOperator extends TestCase {
         assertTrue(result2.accepts("'*'"));
         assertTrue(result2.accepts("','"));
         assertTrue(result2.accepts("???"));
-        assertTrue(result2.accepts(" , , "));
-        assertTrue(result.accepts("plik.'?'?'?'"));
+        assertTrue(result2.accepts("' , , '"));
+        assertTrue(result.accepts("'plik.???'"));
 
     }
 
