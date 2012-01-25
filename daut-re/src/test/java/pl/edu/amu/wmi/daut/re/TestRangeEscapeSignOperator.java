@@ -16,8 +16,8 @@ public class TestRangeEscapeSignOperator extends TestCase {
  */
      public void testRangeEscapeSignOperator() {
 
-      RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
-      RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
+      RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"");
+      RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'");
       assertNotNull(operator);
       assertNotNull(operator2);
 
@@ -27,30 +27,30 @@ public class TestRangeEscapeSignOperator extends TestCase {
  *
  * Test metody CreateFixedAutomaton.
  */
-     public void TestCreateFixedAutomaton() {
+     public void testCreateFixedAutomaton() {
 
        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
        NondeterministicAutomatonByThompsonApproach result =
         new NondeterministicAutomatonByThompsonApproach(automaton);
 
-        assertTrue(result.accepts("?"));
-        assertTrue(result.accepts("*"));
-        assertTrue(result.accepts(","));
-        assertTrue(result.accepts("???"));
-        assertTrue(result.accepts(" , , "));
-        assertTrue(result.accepts("plik.???"));
+        assertFalse(result.accepts("?"));
+        assertFalse(result.accepts("*"));
+        assertFalse(result.accepts(","));
+        assertFalse(result.accepts("???"));
+        assertFalse(result.accepts(" , , "));
+        assertFalse(result.accepts("plik.???"));
 
        RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
        NondeterministicAutomatonByThompsonApproach result2 =
         new NondeterministicAutomatonByThompsonApproach(automaton2);
 
-        assertTrue(result2.accepts("?"));
-        assertTrue(result2.accepts("*"));
-        assertTrue(result2.accepts(","));
-        assertTrue(result2.accepts("???"));
-        assertTrue(result2.accepts(" , , "));
+        assertFalse(result2.accepts("?"));
+        assertFalse(result2.accepts("*"));
+        assertFalse(result2.accepts(","));
+        assertFalse(result2.accepts("???"));
+        assertFalse(result2.accepts(" , , "));
 
     }
  /**
