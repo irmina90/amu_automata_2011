@@ -72,10 +72,7 @@ public class TestFileMaskOperatorManager extends TestCase {
         List<String> rangeEscapeSign = new ArrayList<String>();
         rangeEscapeSign.add("\"");
         rangeEscapeSign.add("\"");
-        //RangeEscapeSign.add("\'");
-        //RangeEscapeSign.add("\'");
         assertEquals(rangeEscapeSign, manager.getSeparators("\"\""));
-        //assertEquals(RangeEscapeSign, manager.getSeparators("\'\'"));
 
     }
 
