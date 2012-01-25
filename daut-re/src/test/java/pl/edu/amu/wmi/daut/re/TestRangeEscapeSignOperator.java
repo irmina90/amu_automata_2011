@@ -2,7 +2,7 @@ package pl.edu.amu.wmi.daut.re;
 import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
 import junit.framework.TestCase;
-import pl.edu.amu.wmi.daut.base.AutomatonByRecursion;
+import pl.edu.amu.wmi.daut.base.NondeterministicAutomatonByThompsonApproach;
 import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
 
 /**
@@ -27,34 +27,30 @@ public class TestRangeEscapeSignOperator extends TestCase {
  *
  * Test metody CreateFixedAutomaton.
  */
-     public void testCreateFixedAutomaton() {
+     public void TestCreateFixedAutomaton() {
 
        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
-       AutomatonByRecursion result = new AutomatonByRecursion(automaton);
-       assertFalse(automaton.isEmpty());
-       assertFalse(automaton.acceptEmptyWord());
+       NondeterministicAutomatonByThompsonApproach result =
+        new NondeterministicAutomatonByThompsonApproach(automaton);
 
-        assertTrue(result.accepts("\"?\""));
-        assertTrue(result.accepts("\"*\""));
-        assertTrue(result.accepts("\",\""));
-        assertTrue(result.accepts("\"???\""));
-        assertTrue(result.accepts("\" , , \""));
-        assertTrue(result.accepts("\"plik.???\""));
-        assertTrue(result.accepts("\"*.txt???\""));
+        assertTrue(result.accepts("?"));
+        assertTrue(result.accepts("*"));
+        assertTrue(result.accepts(","));
+        assertTrue(result.accepts("???"));
+        assertTrue(result.accepts(" , , "));
+        assertTrue(result.accepts("plik.???"));
 
        RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
-       AutomatonByRecursion result2 = new AutomatonByRecursion(automaton2);
-       assertFalse(automaton2.isEmpty());
-       assertFalse(automaton2.acceptEmptyWord());
+       NondeterministicAutomatonByThompsonApproach result2 =
+        new NondeterministicAutomatonByThompsonApproach(automaton2);
 
-        assertTrue(result2.accepts("\'?\'"));
-        assertTrue(result2.accepts("\'*\'"));
-        assertTrue(result2.accepts("\',\'"));
-        assertTrue(result2.accepts("\'???\'"));
-        assertTrue(result2.accepts("\' , , \'"));
-        assertTrue(result.accepts("\'plik.???\'"));
+        assertTrue(result2.accepts("?"));
+        assertTrue(result2.accepts("*"));
+        assertTrue(result2.accepts(","));
+        assertTrue(result2.accepts("???"));
+        assertTrue(result2.accepts(" , , "));
 
     }
  /**
