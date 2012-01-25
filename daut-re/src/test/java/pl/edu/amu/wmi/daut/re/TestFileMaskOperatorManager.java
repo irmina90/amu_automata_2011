@@ -49,32 +49,32 @@ public class TestFileMaskOperatorManager extends TestCase {
 
         RegexpOperatorManager manager = new FileMaskOperatorManager();
 
-        List<String> AnyString = new ArrayList<String>();
-        AnyString.add("");
-        AnyString.add("*");
-        assertEquals(AnyString, manager.getSeparators("*"));
+        List<String> anyString = new ArrayList<String>();
+        anyString.add("");
+        anyString.add("*");
+        assertEquals(anyString, manager.getSeparators("*"));
 
-        List<String> AnyChar = new ArrayList<String>();
-        AnyChar.add("?");
-        assertEquals(AnyChar, manager.getSeparators("?"));
+        List<String> anyChar = new ArrayList<String>();
+        anyChar.add("?");
+        assertEquals(anyChar, manager.getSeparators("?"));
 
-        List<String> DoNothing = new ArrayList<String>();
-        DoNothing.add("{");
-        DoNothing.add("}");
-        assertEquals(DoNothing, manager.getSeparators("{}"));
+        List<String> doNothing = new ArrayList<String>();
+        doNothing.add("{");
+        doNothing.add("}");
+        assertEquals(doNothing, manager.getSeparators("{}"));
 
-        List<String> Alternative = new ArrayList<String>();
-        Alternative.add("");
-        Alternative.add(",");
-        Alternative.add("");
-        assertEquals(Alternative, manager.getSeparators(","));
+        List<String> alternative = new ArrayList<String>();
+        alternative.add("");
+        alternative.add(",");
+        alternative.add("");
+        assertEquals(alternative, manager.getSeparators(","));
 
-        List<String> RangeEscapeSign = new ArrayList<String>();
-        RangeEscapeSign.add("\"");
-        RangeEscapeSign.add("\"");
+        List<String> rangeEscapeSign = new ArrayList<String>();
+        rangeEscapeSign.add("\"");
+        rangeEscapeSign.add("\"");
         //RangeEscapeSign.add("\'");
         //RangeEscapeSign.add("\'");
-        assertEquals(RangeEscapeSign, manager.getSeparators("\"\""));
+        assertEquals(rangeEscapeSign, manager.getSeparators("\"\""));
         //assertEquals(RangeEscapeSign, manager.getSeparators("\'\'"));
 
     }
