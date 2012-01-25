@@ -27,7 +27,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
  *
  * Test metody CreateFixedAutomaton.
  */
-     public void TestCreateFixedAutomaton() {
+     public void testCreateFixedAutomaton() {
 
        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
