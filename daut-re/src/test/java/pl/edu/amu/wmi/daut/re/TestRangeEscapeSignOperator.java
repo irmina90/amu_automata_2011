@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
 import pl.edu.amu.wmi.daut.base.NondeterministicAutomatonByThompsonApproach;
 import junit.framework.TestCase;
+import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
 
 /**
  *
@@ -46,14 +47,13 @@ public class TestRangeEscapeSignOperator extends TestCase {
 
     }
 
-       public final void testFactory() {
+ public final void testFactory() {
 
-        RegexpOperatorFactory factory = new RangeEscapeSignOperator.Factory();
+        Factory factory = new Factory();
         ArrayList<String> params = new ArrayList<String>();
-        assertEquals(1, factory.arity());
+        params.add(0, "*");
         assertEquals(factory.createOperator(params).getClass(),
-            new RangeEscapeSignOperator(params.get(0)));
+            new RangeEscapeSignOperator("*").getClass());
 
     }
-
 }
