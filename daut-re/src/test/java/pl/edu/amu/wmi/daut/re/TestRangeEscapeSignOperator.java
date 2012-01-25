@@ -29,12 +29,12 @@ public class TestRangeEscapeSignOperator extends TestCase {
  */
      public void testCreateFixedAutomaton() {
 
-       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
+       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"?\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
        NondeterministicAutomatonByThompsonApproach result =
         new NondeterministicAutomatonByThompsonApproach(automaton);
 
-        assertFalse(result.accepts("?"));
+        assertTrue(result.accepts("?"));
         assertFalse(result.accepts("*"));
         assertFalse(result.accepts(","));
         assertFalse(result.accepts("???"));
