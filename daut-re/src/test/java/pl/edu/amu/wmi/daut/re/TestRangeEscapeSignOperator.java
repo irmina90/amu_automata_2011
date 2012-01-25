@@ -34,26 +34,36 @@ public class TestRangeEscapeSignOperator extends TestCase {
        NondeterministicAutomatonByThompsonApproach result =
         new NondeterministicAutomatonByThompsonApproach(automaton);
 
-        assertFalse(result.accepts("?"));
-        assertFalse(result.accepts("*"));
-        assertFalse(result.accepts(","));
+        assertFalse(result.accepts("\"?\""));
+        assertFalse(result.accepts("\"*\""));
+        assertFalse(result.accepts("\",\""));
         assertFalse(result.accepts("???"));
         assertFalse(result.accepts(" , , "));
-        assertFalse(result.accepts("plik.???"));
+        assertFalse(result.accepts("\"plik.???\""));
         assertFalse(result.accepts("ba"));
-        assertTrue(result.accepts("a"));
+        assertTrue(result.accepts("\"?a\""));
 
-       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
+       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'*a\'");
        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
        NondeterministicAutomatonByThompsonApproach result2 =
         new NondeterministicAutomatonByThompsonApproach(automaton2);
 
-        assertFalse(result2.accepts("?"));
-        assertFalse(result2.accepts("*"));
-        assertFalse(result2.accepts(","));
+        assertFalse(result2.accepts("cbacbacbaa"));
+        assertTrue(result2.accepts("\'*a\'"));
+        assertFalse(result2.accepts("\',\'"));
         assertFalse(result2.accepts("???"));
         assertFalse(result2.accepts(" , , "));
 
+       RangeEscapeSignOperator operator3 = new RangeEscapeSignOperator("\'b,a\'");
+       AutomatonSpecification automaton3 = operator3.createFixedAutomaton();
+       NondeterministicAutomatonByThompsonApproach result3 =
+        new NondeterministicAutomatonByThompsonApproach(automaton3);
+
+        assertFalse(result3.accepts("b,a"));
+        assertTrue(result3.accepts("\'b,a\'"));
+        assertFalse(result3.accepts("\',\'"));
+        assertFalse(result3.accepts("???"));
+        assertFalse(result3.accepts(" , , "));
     }
  /**
  *
