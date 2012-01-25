@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
 import junit.framework.TestCase;
 import pl.edu.amu.wmi.daut.base.AutomatonByRecursion;
+import pl.edu.amu.wmi.daut.base.NondeterministicAutomatonByThompsonApproach;
 import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
 
 /**
@@ -17,7 +18,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
      public void testRangeEscapeSignOperator() {
 
       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
-      RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("''");
+      RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
       assertNotNull(operator);
       assertNotNull(operator2);
 
@@ -27,14 +28,13 @@ public class TestRangeEscapeSignOperator extends TestCase {
  *
  * Test metody CreateFixedAutomaton.
  */
-     public void testCreateFixedAutomaton() {
+public void testRangeEscapeSignOperatorA() {
+        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
+        AutomatonSpecification automaton = operator.createFixedAutomaton();
+        NondeterministicAutomatonByThompsonApproach result =
+                new NondeterministicAutomatonByThompsonApproach(automaton);
 
-       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"");
-       AutomatonSpecification automaton = operator.createFixedAutomaton();
-       AutomatonByRecursion result = new AutomatonByRecursion(automaton);
-       assertFalse(automaton.isEmpty());
-       assertFalse(automaton.acceptEmptyWord());
-
+        assertFalse(automaton.isEmpty());
         assertTrue(result.accepts("?"));
         assertTrue(result.accepts("*"));
         assertTrue(result.accepts(","));
@@ -42,22 +42,24 @@ public class TestRangeEscapeSignOperator extends TestCase {
         assertTrue(result.accepts(" , , "));
         assertTrue(result.accepts("plik.???"));
         assertTrue(result.accepts("*.txt???"));
+}
 
-       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'");
-       AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
-       AutomatonByRecursion result2 = new AutomatonByRecursion(automaton2);
-       assertFalse(automaton2.isEmpty());
-       assertFalse(automaton2.acceptEmptyWord());
 
+
+		public void testRangeEscapeSignOperatorQ() {
+        RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
+        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
+        NondeterministicAutomatonByThompsonApproach result2 =
+                new NondeterministicAutomatonByThompsonApproach(automaton2);
+
+        assertFalse(automaton2.isEmpty());
         assertTrue(result2.accepts("'?'"));
         assertTrue(result2.accepts("'*'"));
         assertTrue(result2.accepts("','"));
         assertTrue(result2.accepts("???"));
         assertTrue(result2.accepts("' , , '"));
-        assertTrue(result.accepts("'plik.???'"));
-
-    }
-
+        assertTrue(result2.accepts("'plik.???'"));
+                }
  /**
  *
  * Test metody Factory.
