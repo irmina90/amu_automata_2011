@@ -7,25 +7,32 @@ import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
 
 /**
  *
- * @author Irminka
+ * Test klasy RangeEscapeSignOperator.
  */
 public class TestRangeEscapeSignOperator extends TestCase {
+/**
+ *
+ * Test konstruktora TestRangeEscaoeSignOperator.
+ */
+     public void testRangeEscapeSignOperator() {
 
-       public void testRangeEscapeSignOperator() {
-
-        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
-        RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("''");
-        assertNotNull(operator);
-        assertNotNull(operator2);
+      RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
+      RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("''");
+      assertNotNull(operator);
+      assertNotNull(operator2);
 
     }
 
+/**
+ *
+ * Test metody CreateFixedAutomaton.
+ */
      public void TestCreateFixedAutomaton() {
 
-         RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
-         AutomatonSpecification automaton = operator.createFixedAutomaton();
-         NondeterministicAutomatonByThompsonApproach result =
-          new NondeterministicAutomatonByThompsonApproach(automaton);
+       RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
+       AutomatonSpecification automaton = operator.createFixedAutomaton();
+       NondeterministicAutomatonByThompsonApproach result =
+        new NondeterministicAutomatonByThompsonApproach(automaton);
 
         assertTrue(result.accepts("?"));
         assertTrue(result.accepts("*"));
@@ -34,10 +41,10 @@ public class TestRangeEscapeSignOperator extends TestCase {
         assertTrue(result.accepts(" , , "));
         assertTrue(result.accepts("plik.???"));
 
-         RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
-         AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
-         NondeterministicAutomatonByThompsonApproach result2 =
-          new NondeterministicAutomatonByThompsonApproach(automaton2);
+       RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
+       AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
+       NondeterministicAutomatonByThompsonApproach result2 =
+        new NondeterministicAutomatonByThompsonApproach(automaton2);
 
         assertTrue(result2.accepts("?"));
         assertTrue(result2.accepts("*"));
@@ -47,7 +54,11 @@ public class TestRangeEscapeSignOperator extends TestCase {
 
     }
 
- public final void testFactory() {
+ /**
+ *
+ * Test metody Factory.
+ */
+    public final void testFactory() {
 
         Factory factory = new Factory();
         ArrayList<String> params = new ArrayList<String>();
