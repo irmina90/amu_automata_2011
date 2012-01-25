@@ -98,7 +98,7 @@ public class TestFileMaskOperatorManager extends TestCase {
         assertEquals(Arrays.<String>asList("*", ","), string);
 
         string = manager.getOperatorsForStringPrefix("");
-        assertEquals(Arrays.<String>asList("*",","), string);
+        assertEquals(Arrays.<String>asList("*", ","), string);
 
     }
 }
