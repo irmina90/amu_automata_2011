@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import pl.edu.amu.wmi.daut.base.AutomatonSpecification;
 import pl.edu.amu.wmi.daut.base.NondeterministicAutomatonByThompsonApproach;
 import junit.framework.TestCase;
+import pl.edu.amu.wmi.daut.base.AutomatonByRecursion;
 import pl.edu.amu.wmi.daut.re.RangeEscapeSignOperator.Factory;
 
 /**
@@ -31,8 +32,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
 
        RangeEscapeSignOperator operator = new RangeEscapeSignOperator("\"\"");
        AutomatonSpecification automaton = operator.createFixedAutomaton();
-       NondeterministicAutomatonByThompsonApproach result =
-        new NondeterministicAutomatonByThompsonApproach(automaton);
+       AutomatonByRecursion result = new AutomatonByRecursion(automaton);
 
         assertTrue(result.accepts("?"));
         assertTrue(result.accepts("*"));
@@ -43,8 +43,7 @@ public class TestRangeEscapeSignOperator extends TestCase {
 
        RangeEscapeSignOperator operator2 = new RangeEscapeSignOperator("\'\'");
        AutomatonSpecification automaton2 = operator2.createFixedAutomaton();
-       NondeterministicAutomatonByThompsonApproach result2 =
-        new NondeterministicAutomatonByThompsonApproach(automaton2);
+       AutomatonByRecursion result2 = new AutomatonByRecursion(automaton2);
 
         assertTrue(result2.accepts("?"));
         assertTrue(result2.accepts("*"));
